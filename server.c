@@ -14,18 +14,15 @@ void	handler(int signum, siginfo_t *info, void *context)
 	char_accum <<= 1;
 	if (signum == SIGUSR1)
 		char_accum |= 1;
-	if (++bit_count == 8)
-	{
-		if (char_accum == 0)
+		if (++bit_count == 8)
 		{
-			write(1, "\n[FIN]\n", 7);
-			return;
+			if (char_accum == 0)
+				write(1, "\n[FIN]\n", 7);
+			else
+				write(1, &char_accum, 1);
+			bit_count = 0;
+			char_accum = 0;
 		}
-		else
-			write(1, &char_accum, 1);
-		bit_count = 0;
-		char_accum = 0;
-	}
 }
 
 void	ft_putnbr(int num)

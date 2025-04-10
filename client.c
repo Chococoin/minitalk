@@ -6,7 +6,7 @@
 /*   By: glugo-mu <glugo-mu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 22:13:53 by glugo-mu          #+#    #+#             */
-/*   Updated: 2025/04/09 21:29:45 by glugo-mu         ###   ########.fr       */
+/*   Updated: 2025/04/09 23:01:46 by glugo-mu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	send_char(pid_t pid, unsigned char c)
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
-		usleep(100);
+		usleep(500);
 		i--;
 	}
 }
