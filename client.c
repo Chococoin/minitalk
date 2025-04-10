@@ -6,7 +6,7 @@
 /*   By: glugo-mu <glugo-mu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 22:13:53 by glugo-mu          #+#    #+#             */
-/*   Updated: 2025/04/09 23:01:46 by glugo-mu         ###   ########.fr       */
+/*   Updated: 2025/04/10 14:15:49 by glugo-mu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,10 @@ int	main(int argc, char **argv)
 	int		i;
 
 	if (argc != 3)
+	{
+		write(2, "Uso: ./client [PID_SERVIDOR] [MENSAJE]\n", 38);
 		return (1);
+	}
 	pid = (pid_t)atoi(argv[1]);
 	str = argv[2];
 	i = 0;
@@ -49,4 +52,3 @@ int	main(int argc, char **argv)
 	send_char(pid, '\0');
 	return (0);
 }
-
