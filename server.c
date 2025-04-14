@@ -6,7 +6,7 @@
 /*   By: glugo-mu <glugo-mu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 22:05:13 by glugo-mu          #+#    #+#             */
-/*   Updated: 2025/04/10 14:23:58 by glugo-mu         ###   ########.fr       */
+/*   Updated: 2025/04/14 06:37:07 by glugo-mu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,15 +26,15 @@ void	handler(int signum, siginfo_t *info, void *context)
 	char_accum <<= 1;
 	if (signum == SIGUSR1)
 		char_accum |= 1;
-		if (++bit_count == 8)
-		{
-			if (char_accum == 0)
-				write(1, "\n[FIN]\n", 7);
-			else
-				write(1, &char_accum, 1);
-			bit_count = 0;
-			char_accum = 0;
-		}
+	if (++bit_count == 8)
+	{
+		if (char_accum == 0)
+			write(1, "\n[FIN]\n", 7);
+		else
+			write(1, &char_accum, 1);
+		bit_count = 0;
+		char_accum = 0;
+	}
 }
 
 void	ft_putnbr(int num)
