@@ -6,7 +6,7 @@
 /*   By: glugo-mu <glugo-mu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 22:05:13 by glugo-mu          #+#    #+#             */
-/*   Updated: 2025/04/14 06:37:07 by glugo-mu         ###   ########.fr       */
+/*   Updated: 2025/04/14 08:52:22 by glugo-mu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ void	handler(int signum, siginfo_t *info, void *context)
 		bit_count = 0;
 		char_accum = 0;
 	}
+	// if (kill(info->si_pid, SIGUSR1) == -1)
+	// 	write(2, "Failed to confirm to client\n", 28);
 }
 
 void	ft_putnbr(int num)
