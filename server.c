@@ -6,23 +6,25 @@
 /*   By: glugo-mu <glugo-mu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 22:05:13 by glugo-mu          #+#    #+#             */
-/*   Updated: 2025/04/14 08:52:22 by glugo-mu         ###   ########.fr       */
+/*   Updated: 2025/04/15 18:34:07 by glugo-mu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#define _XOPEN_SOURCE 700
 #include <unistd.h>
 #include <signal.h>
+#include <sys/types.h>
 
-void	handler(int signum, siginfo_t *info, void *context)
+void	handler(int signum, siginfo_t *info, void *ctx)
 {
 	static int				bit_count;
 	static unsigned char	char_accum;
 
-	(void)context;
+	(void)ctx;
 	if (!info || info->si_pid <= 0)
-		return;
+		return ;
 	if (signum != SIGUSR1 && signum != SIGUSR2)
-		return;
+		return ;
 	char_accum <<= 1;
 	if (signum == SIGUSR1)
 		char_accum |= 1;
@@ -35,8 +37,8 @@ void	handler(int signum, siginfo_t *info, void *context)
 		bit_count = 0;
 		char_accum = 0;
 	}
-	// if (kill(info->si_pid, SIGUSR1) == -1)
-	// 	write(2, "Failed to confirm to client\n", 28);
+	kill(info->si_pid, SIGUSR1);
+	write(1, "[SIG]", 5);
 }
 
 void	ft_putnbr(int num)
