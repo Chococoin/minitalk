@@ -6,14 +6,11 @@
 /*   By: glugo-mu <glugo-mu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 22:05:13 by glugo-mu          #+#    #+#             */
-/*   Updated: 2025/04/15 18:34:07 by glugo-mu         ###   ########.fr       */
+/*   Updated: 2025/04/16 14:19:59 by glugo-mu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#define _XOPEN_SOURCE 700
-#include <unistd.h>
-#include <signal.h>
-#include <sys/types.h>
+#include "minitalk.h"
 
 void	handler(int signum, siginfo_t *info, void *ctx)
 {
@@ -37,33 +34,8 @@ void	handler(int signum, siginfo_t *info, void *ctx)
 		bit_count = 0;
 		char_accum = 0;
 	}
+	usleep(10);
 	kill(info->si_pid, SIGUSR1);
-	write(1, "[SIG]", 5);
-}
-
-void	ft_putnbr(int num)
-{
-	char	n;
-
-	if (num < 0)
-	{
-		write(1, "-", 1);
-		num = -num;
-	}
-	if (num >= 10)
-		ft_putnbr(num / 10);
-	n = num % 10 + '0';
-	write(1, &n, 1);
-}
-
-int	ft_strlen(char *s)
-{
-	int	len;
-
-	len = 0;
-	while (*s++)
-		len++;
-	return (len);
 }
 
 int	main(void)
@@ -74,6 +46,8 @@ int	main(void)
 	pid = getpid();
 	write(1, "PID: ", 5);
 	ft_putnbr(pid);
+	if (pid <= 0)
+		return (1);
 	write(1, "\n", 1);
 	sa.sa_sigaction = &handler;
 	sa.sa_flags = SA_SIGINFO;

@@ -6,7 +6,7 @@
 #    By: glugo-mu <glugo-mu@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/08 22:20:08 by glugo-mu          #+#    #+#              #
-#    Updated: 2025/04/08 22:20:25 by glugo-mu         ###   ########.fr        #
+#    Updated: 2025/04/16 14:31:25 by glugo-mu         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,8 @@ NAME_CLIENT = client
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 
-SRCS_SERVER = server.c
-SRCS_CLIENT = client.c
+SRCS_SERVER = server.c utils.c
+SRCS_CLIENT = client.c utils.c
 
 OBJS_SERVER = $(SRCS_SERVER:.c=.o)
 OBJS_CLIENT = $(SRCS_CLIENT:.c=.o)
