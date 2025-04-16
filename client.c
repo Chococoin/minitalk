@@ -6,7 +6,7 @@
 /*   By: glugo-mu <glugo-mu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 22:13:53 by glugo-mu          #+#    #+#             */
-/*   Updated: 2025/04/16 14:19:35 by glugo-mu         ###   ########.fr       */
+/*   Updated: 2025/04/16 15:11:51 by glugo-mu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ void	handler(int signum, siginfo_t *info, void *ctx)
 	(void)ctx;
 	(void)info;
 	(void)signum;
+	if (signum != SIGUSR1)
+		return ;		
 	g_ack = 1;
 }
 
