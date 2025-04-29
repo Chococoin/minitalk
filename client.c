@@ -6,7 +6,7 @@
 /*   By: glugo-mu <glugo-mu@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/08 22:13:53 by glugo-mu          #+#    #+#             */
-/*   Updated: 2025/04/29 20:13:46 by glugo-mu         ###   ########.fr       */
+/*   Updated: 2025/04/29 20:22:59 by glugo-mu         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	handler(int signum)
 }
 
 void	config_signals(void)
-{	
+{
 	struct sigaction	sa;
 
 	sa.sa_flags = SA_SIGINFO;
